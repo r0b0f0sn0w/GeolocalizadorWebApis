@@ -12,7 +12,6 @@ $telefono2 =filter_var($obj->telefono2);
 $direccion =filter_var($obj->direccion);
 
 $sql="call SP_ACTUALIZAR_USUARIO_RESPONSABLE('$id_usuarioResp','$nombre','$apepat','$apemat','$telefono','$telefono2','$direccion');";
-echo $sql;
 if(ejecutar($sql)){
     echo "update";      
 }else{
