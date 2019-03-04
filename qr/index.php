@@ -1,20 +1,9 @@
 <?php
 //conexion a la base de datos
 include ("generarCadena.php");
-require_once 'DAL/conexion.php';
+require_once '../DAL/conexion.php';
 //cargtamos la libreria para generar el QR
 require_once('phpqrcode/qrlib.php');
-if(isset($_POST['btn'])){
-    print_r($_FILES);
-    $nombre=$_FILES['imagen']['name'];
-    $tmp =$_FILES['imagen']['tmp_name'];
-    //echo $nombre.'<br>'.$tmp;
-    $folder='temp';
-    move_uploaded_file($tmp, $folder.'/'.$nombre);
-    echo $bytesImagen= file_get_contents($folder.'/'.$nombre);
-    
-}
-
 
 $codigo='';
 function generarQR(){
@@ -35,11 +24,6 @@ if(!file_exists($dir))
     echo '<br>';
     QRcode::png($content,$filename,$level,$size,$frameSize);
     echo '<img src="'.$filename.'"/>'.'<br>';
-}
-function guardarQR($contenido,$bytes){
-    $sentencia="insert into usuarioportador (QR,fotografia,id_usuarioResp,id_enfermedad) values('$contenido','$bytes',1,1);";
-    echo '<br>'.$sentencia;
-    ejecutar($sentencia);
 }
 generarQR();
 

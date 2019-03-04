@@ -14,7 +14,7 @@ $password =filter_var($obj->password);
 $sql="call SP_REGISTRAR_USUARIO_RESPONSABLE('$nombre','$apepat','$apemat','$telefono','$telefono2','$direccion','$correo_electronico','$password');";
 
 if(ejecutar($sql)){
-    echo "ejecutado correcto";
+    echo "ejecutado correcto"; 
 }else{
     echo "no :c";
 }
