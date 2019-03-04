@@ -11,8 +11,7 @@ $telefono2 =filter_var($obj->telefono2);
 $direccion =filter_var($obj->direccion);
 $correo_electronico =filter_var($obj->correo_electronico);
 $password =filter_var($obj->password);
-$estado = 0;
-$sql="call SP_REGISTRAR_USUARIO_RESPONSABLE('$nombre','$apepat','$apemat','$telefono','$telefono2','$direccion','$correo_electronico','$password','$estado');";
+$sql="call SP_REGISTRAR_USUARIO_RESPONSABLE('$nombre','$apepat','$apemat','$telefono','$telefono2','$direccion','$correo_electronico','$password');";
 
 if(ejecutar($sql)){
     echo "ejecutado correcto";
