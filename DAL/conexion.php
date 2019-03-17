@@ -16,17 +16,22 @@ function ejecutar($sql){
     desconectarBD($conexion);
     return true;
 }
+
 function traerDatos($sql){
-    $conexion=conectarBD();
-    mysqli_query($conexion,"set names 'utf8'");
-    if(!$resultado= mysqli_query($conexion,$sql)) die();
-    $arregloRespuesta=array();
+    //Creamos la conexión con la función anterior
+    $conexion = conectarBD();
+    //generamos la consulta
+        mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
+    if(!$result = mysqli_query($conexion, $sql)) die(); //si la conexión cancelar programa
+    $rawdata = array(); //creamos un array
+    //guardamos en un array multidimensional todos los datos de la consulta
     $i=0;
-    while($fila= mysqli_fetch_array($resultado)){
-        $arregloRespuesta[$i]=$fila;
+    while($row = mysqli_fetch_array($result))
+    {
+        $rawdata[$i] = $row;
         $i++;
-    }//Cierra while
-    desconectarBD($conexion);
-    return $arregloRespuesta;
+    }
+    desconectarBD($conexion); //desconectamos la base de datos
+    return $rawdata; //devolvemos el array
 }
 ?>
