@@ -1,15 +1,15 @@
 <?php
 /*
-function conectarBD(){
-    $con= mysqli_connect("localhost", "root", "", "geolocalizador");
-    return $con;
-}//cierra el metodo de conexion a la 
-*/
+
 function conectarBD(){
     $con= mysqli_connect("localhost", "id8869452_alex", "477115", "id8869452_db");
     return $con;
 }//cierra el metodo de conexion a la bse de datos
-
+*/
+function conectarBD(){
+    $con= mysqli_connect("localhost", "root", "", "geolocalizador");
+    return $con;
+}//cierra el metodo de conexion a la base de datos
 function desconectarBD($con){
     $cerrarconexion= mysqli_close($con);
     return $cerrarconexion;
@@ -40,4 +40,15 @@ function traerDatos($sql){
     desconectarBD($conexion); //desconectamos la base de datos
     return $rawdata; //devolvemos el array
 }
+
+$host="localhost"; // Host name 
+$username="root"; // Mysql username 
+$password=""; // Mysql password 
+$db_name="geolocalizador"; // Database name 
+/*
+$host="localhost"; // Host name 
+$username="id8869452_alex"; // Mysql username 
+$password="477115"; // Mysql password 
+$db_name="id8869452_db"; // Database name 
+*/
 ?>
