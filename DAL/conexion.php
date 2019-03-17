@@ -1,6 +1,12 @@
 <?php
+/*
 function conectarBD(){
     $con= mysqli_connect("localhost", "root", "", "geolocalizador");
+    return $con;
+}//cierra el metodo de conexion a la 
+*/
+function conectarBD(){
+    $con= mysqli_connect("localhost", "id8869452_alex", "477115", "id8869452_db");
     return $con;
 }//cierra el metodo de conexion a la bse de datos
 
