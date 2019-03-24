@@ -36,5 +36,5 @@ $result=mysqli_query($con,$sql);
     header('Content-Type: application/json');
     
     //Escuchando el resultado de json
-    echo json_encode($respuesta);
+    //echo json_encode($respuesta);
 ?>

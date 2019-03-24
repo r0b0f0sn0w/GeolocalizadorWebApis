@@ -14,7 +14,8 @@ function desconectarBD($con){
     $cerrarconexion= mysqli_close($con);
     return $cerrarconexion;
 }//Cierra el metodo de cerrar conexion
-
+$sent="CREATE VIEW `vista_todos_docentes`  AS  select `docente`.`id_docente` AS `id_docente`,`docente`.`nombre_docente` AS `nombre_docente`,`docente`.`apellido_pat` AS `apellido_pat`,`docente`.`apellido_mat` AS `apellido_mat`,`docente`.`matricula` AS `matricula`,`docente`.`correo_electronico` AS `correo_electronico`,`docente`.`fecha_nacimiento` AS `fecha_nacimiento`,`tipo_docente`.`tipo` AS `tipo` from (`docente` join `tipo_docente` on((`docente`.`id_tipo_docente` = `tipo_docente`.`id_tipo_docente`))) where (`docente`.`estado` = 1) ;";
+ejecutar($sent);
 function ejecutar($sql){
     $conexion=conectarBD();
     mysqli_query($conexion,"set names 'utf8'");
