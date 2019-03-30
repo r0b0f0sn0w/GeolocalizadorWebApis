@@ -1,7 +1,7 @@
 <?php
 include_once 'DAL/conexion.php';
 
-$respuesta["usuarios"] = array();  
+$respuesta["usuario"] = array();
 
 $con = mysqli_connect("$host", "$username", "$password")or die("cannot connect server "); 
 mysqli_select_db($con,"$db_name")or die("cannot select DB");
@@ -23,7 +23,7 @@ $result=mysqli_query($con,$sql);
         $tmp["up_telefono2"] = $row["up_telefono2"];
         $tmp["up_direccion"] = $row["up_direccion"];
         // Push categoría a final json array
-        array_push($respuesta["usuarios"], $tmp);
+        array_push($respuesta["usuario"], $tmp);
     }
     // Mantener el encabezado de respuesta a json
     header('Content-Type: application/json');

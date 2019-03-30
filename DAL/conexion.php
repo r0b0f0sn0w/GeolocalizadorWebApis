@@ -1,15 +1,15 @@
 <?php
-/*
+
 
 function conectarBD(){
-    $con= mysqli_connect("localhost", "id8869452_alex", "477115", "id8869452_db");
+    $con= mysqli_connect("raesaldro.000webhostapp.com", "id8869452_alex", "477115", "id8869452_db");
     return $con;
 }//cierra el metodo de conexion a la bse de datos
-*/
+/*
 function conectarBD(){
     $con= mysqli_connect("localhost", "root", "", "geolocalizador");
     return $con;
-}//cierra el metodo de conexion a la base de datos
+}//cierra el metodo de conexion a la base de datos*/
 function desconectarBD($con){
     $cerrarconexion= mysqli_close($con);
     return $cerrarconexion;
