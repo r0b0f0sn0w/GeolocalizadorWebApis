@@ -1,6 +1,6 @@
 <?php
 include ("DAL/conexion.php");
-$respuesta["mensaje"] = array();  
+$respuesta["mensaje"] = array();
     header('Content-Type: application/json');
 $json=file_get_contents('php://input');
 $obj=json_decode($json);
@@ -19,22 +19,19 @@ if(ejecutar($sql)){
         $to = $correo_electronico;
         $subject = "Bienvenido a geolocalizador!";
         $message = "Bienvenido la aplicacion geolocalizador, para activa su cuenta usted necesita acceder a:";
-        $headers = "From:" . $from;
+        $header = "From:" . $from;
         if (mail($to,  utf8_decode($subject), utf8_decode($message), $header)) {
-            $tmp = array();
-            $tmp=["ok"];
-            array_push($respuesta["mensaje"], $tmp);
+            $tmp=array("mensaje"=>"ok");
+            array_push($respuesta["mensaje"],$tmp);
             echo json_encode($respuesta);
         } else {
-            $tmp = array();
-            $tmp=["no"];
-            array_push($respuesta["mensaje"], $tmp);
+           $tmp=array("mensaje"=>"no");
+            array_push($respuesta["mensaje"],$tmp);
             echo json_encode($respuesta);
-        }//Cierra else anidado
+         }//Cierra else anidado
         }else{
-    $tmp = array();
-    $tmp=["no"];
-    array_push($respuesta["mensaje"], $tmp);
-    echo json_encode($respuesta);
+           $tmp=array("mensaje"=>"no");
+            array_push($respuesta["mensaje"],$tmp);
+            echo json_encode($respuesta);
 }
 ?>
