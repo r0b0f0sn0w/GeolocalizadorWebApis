@@ -13,7 +13,6 @@ echo <<<xxx
 <body>
 
 <div class="container" style="margin-top: 90px;" >
-
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
@@ -44,6 +43,7 @@ echo <<<xxx
                             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
                             <input placeholder="Repetir contraseña" type="password" id="pass2" class="form-control contrasenia" required>
                         </div>
+                            <p id="elID"></p>
                     </div>
                 </div>
             </div>

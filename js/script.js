@@ -14,29 +14,28 @@ function peticion() {
 
 function resetpass(){
     peticion();
-    var id = document.getElementById("id").value;
-    var correo = document.getElementById("correo").value;
+    var idresp = document.getElementById("id").value;
+    var email = document.getElementById("correo").value;
     var pass1 = document.getElementById("pass1").value;
     var pass2 = document.getElementById("pass2").value;
-    
-    if(pass1!=pass2){
-            alert("Las contraseñas deben coincidir");
-            return;
-        } else {
-        LaPeticion.onreadystatechange = mostrarContenido('alertas');
+    if(pass1==pass2){
+            //var js= JSON.stringify({'email':correo,'id':id, 'pass1': pass1});
+            //alert (js);
+            
+        LaPeticion.onreadystatechange = mostrarContenido('elID');
         LaPeticion.open('POST', 'cambiar_pass.php', true);
-        LaPeticion.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        LaPeticion.send(
-                "id_usuarioResp=" + id + 
-                " & correo=" + correo + 
-                " & pass1=" + pass1 + 
-                " & pass2=" + pass2);
+        LaPeticion.setRequestHeader("Content-type", "application/json");
+        var js=JSON.stringify({email:email,id:idresp, pass1: pass1});
+        LaPeticion.send(js);
+        } else {
+            alert("La contraseñas deben coincidir");
+            return;
     }//Cierra else interno
 }//Cierra metodo agregar
 function mostrarContenido(elID) {
     return function () {
         if (LaPeticion.readyState < 4) {
-            document.getElementById(elID).innerHTML = "<p>No se ha podido conectar con el servidor</p>";
+            document.getElementById(elID).innerHTML = "<p>Conectado con el servidor</p>";
         } else if (LaPeticion.readyState === 4) {
             if (LaPeticion.status === 200) {
                 var respuestaAjax = LaPeticion.responseText;
