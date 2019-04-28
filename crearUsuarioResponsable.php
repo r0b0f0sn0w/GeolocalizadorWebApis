@@ -18,7 +18,7 @@ if(ejecutar($sql)){
         $from = "geolocalizadorUT@gmail.com";
         $to = $correo_electronico;
         $subject = "Bienvenido a geolocalizador!";
-        $message = "Bienvenido la aplicacion geolocalizador, para activa su cuenta usted necesita acceder a:";
+        $message = "Bienvenido la aplicacion geolocalizador, le informamos que su cuenta esta INACTIVA, para activar su cuenta usted varificarla, para hacerlo puede seguir la siguiente dirección: "."https://raesaldro.000webhostapp.com/WebServicesGeolocalizador/verificarCuenta.php?correo=".$correo_electronico;
         $header = "From:" . $from;
         if (mail($to,  utf8_decode($subject), utf8_decode($message), $header)) {
             $tmp=array("mensaje"=>"ok");

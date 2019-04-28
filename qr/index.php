@@ -18,7 +18,7 @@ if(!file_exists($dir))
     $size=5;    //Tamanio de la imagen que se creara
     $level='L'; //precicion del codigo que tan definido se vera, puede ser L, Q, H
     $frameSize=3;   //tamaño del marco del qr
-    $content= generarCadena();  //contenido, mandamos a llamar al metodo que genera cadenas
+    $content='4A67F86E7B6F6FDE6DE866B35A6A66B2D8834AD3osQlkPPqdmnLKUOEpSKlWa0RX2mU73a4we0MAbIG'; //generarCadena();  //contenido, mandamos a llamar al metodo que genera cadenas
     $codigo=$content;
     echo 'Contenido del QR: '.'<br>'.'<p id="contenido" value="hola">'.$content.'</p>';
     echo '<br>';

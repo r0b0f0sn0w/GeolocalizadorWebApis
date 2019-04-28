@@ -31,7 +31,25 @@ function resetpass(){
             alert("La contraseñas deben coincidir");
             return;
     }//Cierra else interno
-}//Cierra metodo agregar
+}//Cierra metodo resetpass
+
+
+function verificar(){
+    peticion();
+    var correo = document.getElementById("correo").value;
+    var correoReq = document.getElementById("correoReq").value;
+    if(correo==correoReq){
+        LaPeticion.onreadystatechange = mostrarContenido('elID');
+        LaPeticion.open('POST', 'validarEmail.php', true);
+        LaPeticion.setRequestHeader("Content-type", "application/json");
+        var js=JSON.stringify({email:correo});
+        LaPeticion.send(js);
+        } else {
+            alert("Su correo electronico no coincide");
+            return;
+    }//Cierra else interno
+}//Cierra metodo resetpass
+
 function mostrarContenido(elID) {
     return function () {
         if (LaPeticion.readyState < 4) {
