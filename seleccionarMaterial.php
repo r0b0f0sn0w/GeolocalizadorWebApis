@@ -28,10 +28,6 @@ $result=mysqli_query($con,$sql);
         // Push categoría a final json array
         array_push($respuesta["materias"], $tmp);
     }
-    
-    // Mantener el encabezado de respuesta a json
-    header('Content-Type: application/json');
-    
     //Escuchando el resultado de json
     echo json_encode($respuesta);
 ?>

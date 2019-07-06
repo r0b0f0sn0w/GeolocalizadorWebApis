@@ -15,10 +15,11 @@ if(!file_exists($dir))
     //pasamos la ruta de la imagen
     $filename=$dir.'prueba.png';
     //configuracion del codigo QR
-    $size=5;    //Tamanio de la imagen que se creara
+    $size=3;    //Tamanio de la imagen que se creara
     $level='L'; //precicion del codigo que tan definido se vera, puede ser L, Q, H
     $frameSize=3;   //tamaño del marco del qr
-    $content='4A67F86E7B6F6FDE6DE866B35A6A66B2D8834AD3osQlkPPqdmnLKUOEpSKlWa0RX2mU73a4we0MAbIG'; //generarCadena();  //contenido, mandamos a llamar al metodo que genera cadenas
+    $url="";
+    $content='https://raesaldro.000webhostapp.com/WebServicesGeolocalizador/LeerEncontrado.php?QR='.generarCadena();  //contenido, mandamos a llamar al metodo que genera cadenas
     $codigo=$content;
     echo 'Contenido del QR: '.'<br>'.'<p id="contenido" value="hola">'.$content.'</p>';
     echo '<br>';

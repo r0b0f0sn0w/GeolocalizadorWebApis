@@ -1,7 +1,6 @@
 <?php
 include ("DAL/conexion.php");
 $respuesta["mensaje"] = array();
-    header('Content-Type: application/json');
 $json=file_get_contents('php://input');
 $obj=json_decode($json);
 $idportador=filter_var($obj->idportador);

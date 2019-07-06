@@ -5,8 +5,6 @@ $obj=json_decode($json);
 $email =filter_var($obj->correo_electronico);
 $id =filter_var($obj->id_usuarioResp);
 trim($email);
-    header('Content-Type: text/html; charset=UTF-8');
-    header('Content-Type: application/json');
 
 $from = "geolocalizadorUT@gmail.com";
 $to = $email;
@@ -17,9 +15,13 @@ if (mail($to,  utf8_decode($subject), utf8_decode($message), $headers)) {
             $tmp=array("mensaje"=>"ok");
             array_push($respuesta["mensaje"],$tmp);
             echo json_encode($respuesta);
+            header('Content-Type: text/html; charset=UTF-8');
+            header('Content-Type: application/json');
 } else {
             $tmp=array("mensaje"=>"ok");
             array_push($respuesta["mensaje"],$tmp);
             echo json_encode($respuesta);
+            header('Content-Type: text/html; charset=UTF-8');
+            header('Content-Type: application/json');
 }
 ?>
