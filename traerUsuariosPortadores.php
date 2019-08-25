@@ -16,12 +16,16 @@ $result=mysqli_query($con,$sql);
     while($row = mysqli_fetch_array($result)){
         // Array temporal para crear una sola categoría
         $tmp = array();
+        $tmp["idPortador"] = $row["idPortador"];
         $tmp["up_nombre"] = $row["up_nombre"];
         $tmp["up_apellidopat"] = $row["up_apellidoPat"];
         $tmp["up_apellidomat"] = $row["up_apellidoMat"];
         $tmp["up_telefono"] = $row["up_telefono"];
         $tmp["up_telefono2"] = $row["up_telefono2"];
         $tmp["up_direccion"] = $row["up_direccion"];
+        $tmp["ruta_img"] = $row["ruta_img"];
+        $tmp["padecimiento"] = $row["padecimiento"];
+        $tmp["descripcion"] = $row["descripcion"];
         // Push categoría a final json array
         array_push($respuesta["usuarios"], $tmp);
     }

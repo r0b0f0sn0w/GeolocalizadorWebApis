@@ -1,65 +1,137 @@
 <?php
-$QR=$_REQUEST ['QR'];
-echo <<<xxx
-<!DOCTYPE html>
-<html>
+include_once 'DAL/conexion.php';
+        $QR=$_REQUEST ['QR'];
+	$sql="call SP_LEER_QR('$QR');";
+	$arregloCategorias=traerDatos($sql);
+        $resultados= count($arregloCategorias);
+        if($resultados==0){
+            echo <<<xd
+            <html lang="en">
 <head>
-	<title></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registro no encontrado</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+
+	<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h2>No hemos podido encontrar al usuario que estas consultando</h2>
+			</div>
+			<a >Intenta escanear otro codigo </a>
+		</div>
+	</div>
+
+</body>
+</html>
+
+xd;
+        }else{
+	foreach($arregloCategorias as $item){
+		$ur_nombre=$item['ur_nombre'];
+		$ur_apellidoPat=$item['ur_apellidoPat'];
+		$ur_apellidoMat=$item['ur_apellidoMat'];
+		$ur_correo_electronico=$item['ur_correo_electronico'];
+		$up_nombre=$item['up_nombre'];
+		$up_apellidoPat=$item['up_apellidoPat'];
+		$up_apellidoMat=$item['up_apellidoMat'];
+		$up_direccion=$item['up_direccion'];
+		$up_telefono=$item['up_telefono'];
+		$up_telefono2=$item['up_telefono2'];
+		$up_padecimiento=$item['up_padecimiento'];
+		$up_descripcion=$item['up_descripcion'];
+		$url=$item['url'];
+   echo <<<XD
+                <html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<script src="js/script.js" type="text/javascript"></script>
-</head>
-<body>
-
-<div class="container" style="margin-top: 90px;" >
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <h2>Recuperacion de contraseña</h2>
-                    <hr>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="hidden" id="correo" value="$QR" class="form-control contrasenia" required>
-                        <label class="sr-only" for="contrasenia">Contraseña</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input placeholder="Contraseña" type="password" id="pass1" class="form-control contrasenia" required>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="sr-only" for="contrasenia">Repetir contraseña</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input placeholder="Repetir contraseña" type="password" id="pass2" class="form-control contrasenia" required>
-                        </div>
-                            <p id="elID"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="padding-top: 1rem">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <button type="button" onclick="resetpass();"class="btn btn-success btn-loguearse"><i class="fa fa-sign-in"></i>Restablecer</button>
-                    <p id="elID"></p>
-                </div>
-            </div>
-<div>
-    <script>
-        
-    </script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
+			<title>Sistema de geolocalizacion electrónica</title>
+    </head>
+    <body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+	    <a class="navbar-brand" href="#">Sistema de geolocalizacion electrónica</a>
+	</nav>
+	<div class="content-wrapper">
+	    <div style="margin-top: 75px;" class="container-fluid">
+		<div class="card mb-3">
+		    <div class="card-header">
+			<i></i> Informacion sobre el usuario identificado
+		    </div>
+		    <div class="card-body">
+			<div class="row">
+			    <div class="col">
+				<div class="form-group">
+				    <label>Fotografía:</label>
+				    <center style="background: #e9ecef; border-radius: 10px; border: 1px solid #ced4da;">
+					<img style="border-radius: 10px;" class="img-fluid" src="$url" alt="Usuario">
+				    </center>
+				</div>
+			    </div>
+			    <div class="col">
+				<form>
+				    <div class="form-group">
+					<label>Usuario que se identificó:</label>
+					<p>$up_nombre $up_apellidoPat $up_apellidoMat</p>
+				    </div>
+				    <div class="form-group">
+					<label>Dirección:</label>
+					<p>$up_direccion </p>
+				    </div>
+				    <div class="form-group">
+					<label>Telefono de contacto:</label>
+					<p>$up_telefono</p>
+				    </div>
+				    <div class="form-group">
+					<label>Telefono de contacto 2:</label>
+					<p>$up_telefono2</p>
+				    </div>
+				    <div class="form-group">
+					<label>Padecimientos:</label>
+					<p>$up_padecimiento</p>
+				    </div>
+				    <div class="form-group">
+					<label>Observaciones:</label>
+					<p>$up_descripcion</p>
+				    </div>
+				    <div class="form-group">
+					<label>Usuario que usted puede contactar:</label>
+					<p>$ur_nombre $ur_apellidoPat $ur_apellidoMat </p>
+				    </div>
+				    <div class="form-group">
+					<label>Correo electrico:</label>
+					<p>$ur_correo_electronico</p>
+				    </div>
+				</form>
+			    </div>
+			</div>
+		    </div>
+		    <div class="card-footer small text-muted">Información sobre el usuario identificado</div>
+		</div>
+	    </div>
+	</div>
+    </body>
 </html>
-xxx;
+XD;
+                }
+        }
 ?>

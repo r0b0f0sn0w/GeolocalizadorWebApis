@@ -1,6 +1,6 @@
  <?php
 
-function generarCadena($caracteres=10){
+function generarCadena($caracteres=5){
     $caracteresPosibles = "0123456789ABCDEF";
     $azar = '';
 	$cadena='';
@@ -12,7 +12,7 @@ function generarCadena($caracteres=10){
 	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
-	$length = 10;
+	$length = 5;
     for ($i = 0; $i < $length; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }

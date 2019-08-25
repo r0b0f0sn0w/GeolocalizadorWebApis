@@ -27,7 +27,6 @@ $result=mysqli_query($con,$sql);
         $tmp["up_direccion"] = $row["up_direccion"];
         $tmp["up_padecimiento"] = $row["up_padecimiento"];
         $tmp["up_descripcion"] = $row["up_descripcion"];
-        
         // Push categoría a final json array
         array_push($respuesta["usuario"], $tmp);
     }
